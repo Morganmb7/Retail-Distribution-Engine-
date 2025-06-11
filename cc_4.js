@@ -1,7 +1,7 @@
 let products = [{
     name: "computer",
     category: "electronics",
-    price: 1200.00
+    price: 1200.00,
     Inventory: 900
 }, {
     name: "Protein chips",
@@ -28,8 +28,8 @@ let products = [{
     category: "grocieries",
     price: 3.50,
     Inventory: 450
-}]
-    
+}];
+ //  apply category discounts to products   
 for (let product of products) {
    switch (product.category) {
     case "electronics":
@@ -44,47 +44,64 @@ for (let product of products) {
     case "Phousehold":
         product.price *=0.9;
         break;
-    case "groceries":
-        product.price *=0.9;
-        break;
     default:
         //no discount
         break;
 }
     }
-
-let customerType =["student","senior"];
+// show disocunt for each custoemr type 
+const customerTypes =["student","senior","regular"];
+for (let customerType of customerTypes) {
 let total = 100
 if (customerType === "student") {
     total *= 0.95;
 }else if (customerType === "senior") {
     total *= 0.93;
-}else {
-    // no discount for other customer types
-    total *= 1.0;
-
+}
+    // regular gets no discount
+   console.log(`${customerType}: $${total.toFixed(2)}`);
 } 
-console.log(`Total after customer discount: ${customerType}: $ ${total.toFixed(2)}`);
+
+
+
 
 //stimulate checkout for 3 customers 
-const customerType = ["student", "senior", "regular"];
-for (let i =0; i<3; i++) {
-    let customerType= customerType[i];
+for (let i = 0; i < 3; i++) {
+    let currentCustomerType = customerTypes[i];
     let cartTotal = 0;
 
     //each customer buys 1 of each product
     for (let product of products) {
-        if (product.Inventory >0) {
-        cartTotal += product.price
-        product.Inventory -=1; // reduce inventory
+        if (product.Inventory > 0) {
+            cartTotal += product.price;
+            product.Inventory -= 1; // reduce inventory
         }
     }
 
 }
-//apply customer type discount
-if (customerType === "student") {
-    cartTotal *= 0.95;
-}else if (customerType === "senior") {
-    cartTotal *= 0.93;
-}// regular customers pay full price
-console.log(`Customer #${i+1} (${customerType}) total: $${cartTotal.toFixed(2)}`);
+ //apply customer type discount
+    if (currentCustomerType === "student") {
+        cartTotal *= 0.95;
+    } else if (currentCustomerType === "senior") {
+        cartTotal *= 0.93;
+    }
+    // regular customers pay full price
+
+    console.log(`Customer #${i + 1} (${currentCustomerType}) total: $${cartTotal.toFixed(2)}`);
+
+
+
+//log key/value pairs for a single product after discounts 
+const sampleProduct = products[0]; // first product
+console.log("Sample product details after discounts:");
+for (let key in sampleProduct) {
+    console.log(`${key}: ${sampleProduct[key]}`);
+}
+
+// log all product info after inventory update
+console.log("All products after inventory update:");
+for (const [index, product] of products.entries()) {
+    const entries = Object.entries(product);
+    let info= entries.map(([key, value]) => `${key}: ${value}`).join(", ");
+    console.log(`Product ${index + 1}: ${info}`);
+    }
