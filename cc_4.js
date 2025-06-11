@@ -65,3 +65,26 @@ if (customerType === "student") {
 
 } 
 console.log(`Total after customer discount: ${customerType}: $ ${total.toFixed(2)}`);
+
+//stimulate checkout for 3 customers 
+const customerType = ["student", "senior", "regular"];
+for (let i =0; i<3; i++) {
+    let customerType= customerType[i];
+    let cartTotal = 0;
+
+    //each customer buys 1 of each product
+    for (let product of products) {
+        if (product.Inventory >0) {
+        cartTotal += product.price
+        product.Inventory -=1; // reduce inventory
+        }
+    }
+
+}
+//apply customer type discount
+if (customerType === "student") {
+    cartTotal *= 0.95;
+}else if (customerType === "senior") {
+    cartTotal *= 0.93;
+}// regular customers pay full price
+console.log(`Customer #${i+1} (${customerType}) total: $${cartTotal.toFixed(2)}`);
