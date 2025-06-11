@@ -1,11 +1,7 @@
 let products = [{
     name: "computer",
     category: "electronics",
-<<<<<<< HEAD
     price: 1200.00,
-=======
-    price: 1200.00
->>>>>>> b3ee6f59e1c5810928affe3be7c6f96ae9816e7a
     Inventory: 900
 }, {
     name: "Protein chips",
@@ -29,16 +25,11 @@ let products = [{
     Inventory: 600
 }, {
     name: "Protein brownies",
-    category: "grocieries",
+    category: "groceries",
     price: 3.50,
     Inventory: 450
-<<<<<<< HEAD
 }];
  //  apply category discounts to products   
-=======
-}]
-    
->>>>>>> b3ee6f59e1c5810928affe3be7c6f96ae9816e7a
 for (let product of products) {
    switch (product.category) {
     case "electronics":
@@ -50,38 +41,27 @@ for (let product of products) {
     case "apparel":
         product.price *=0.85;
         break;
-    case "Phousehold":
+    case "household":
         product.price *=0.9;
-        break;
-<<<<<<< HEAD
-=======
-    case "groceries":
-        product.price *=0.9;
-        break;
->>>>>>> b3ee6f59e1c5810928affe3be7c6f96ae9816e7a
+        break
     default:
         //no discount
         break;
 }
     }
-<<<<<<< HEAD
-// show disocunt for each custoemr type 
-const customerTypes =["student","senior","regular"];
-for (let customerType of customerTypes) {
-=======
 
-let customerType =["student","senior"];
->>>>>>> b3ee6f59e1c5810928affe3be7c6f96ae9816e7a
-let total = 100
-if (customerType === "student") {
-    total *= 0.95;
-}else if (customerType === "senior") {
-    total *= 0.93;
-<<<<<<< HEAD
-}
+// Show discount for each customer type
+const customerTypes = ["student", "senior", "regular"];
+for (let customerType of customerTypes) {
+    let total = 100;
+    if (customerType === "student") {
+        total *= 0.95;
+    } else if (customerType === "senior") {
+        total *= 0.93;
+    }
     // regular gets no discount
-   console.log(`${customerType}: $${total.toFixed(2)}`);
-} 
+    console.log(`${customerType}: $${total.toFixed(2)}`);
+}
 
 
 
@@ -99,8 +79,7 @@ for (let i = 0; i < 3; i++) {
         }
     }
 
-}
- //apply customer type discount
+    //apply customer type discount
     if (currentCustomerType === "student") {
         cartTotal *= 0.95;
     } else if (currentCustomerType === "senior") {
@@ -108,7 +87,10 @@ for (let i = 0; i < 3; i++) {
     }
     // regular customers pay full price
 
+    // Print the total for every customer
     console.log(`Customer #${i + 1} (${currentCustomerType}) total: $${cartTotal.toFixed(2)}`);
+}
+    
 
 
 
@@ -126,11 +108,3 @@ for (const [index, product] of products.entries()) {
     let info= entries.map(([key, value]) => `${key}: ${value}`).join(", ");
     console.log(`Product ${index + 1}: ${info}`);
     }
-=======
-}else {
-    // no discount for other customer types
-    total *= 1.0;
-
-} 
-console.log(`Total after customer discount: ${customerType}: $ ${total.toFixed(2)}`);
->>>>>>> b3ee6f59e1c5810928affe3be7c6f96ae9816e7a
